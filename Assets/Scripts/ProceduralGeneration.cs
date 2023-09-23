@@ -8,9 +8,12 @@ public class ProceduralGeneration : MonoBehaviour
 
     [SerializeField] int height;
     float width;
-    [SerializeField] GameObject rock1, rock2, rock3, rock4, oil;
+    [SerializeField] GameObject rock1, rock2, rock3, rock4, oil1;
+    GameObject rock, oil;
     [SerializeField] Camera cam;
+    [SerializeField] int probability;
     int ranType, curType;
+    int counter = 0;
 
     void Start()
     {
@@ -26,31 +29,39 @@ public class ProceduralGeneration : MonoBehaviour
                 curType = Random.Range(1, 10);
             } while (curType == ranType);
             spawnObject(curType, i);
-
+            counter++;
             ranType = curType;
         }
     }
 
     void spawnObject(int type, int i)
     {
-        if (type == 7)
+        if (counter >= probability + Random.RandomRange(0, 2))
         {
-            Instantiate(rock4, new Vector2(width, -i * 5), Quaternion.identity);
-        }
-        else if (type%4 == 1)
-        {
-            Instantiate(rock1, new Vector2(width, -i * 5), Quaternion.identity);
-        }
-        else if(type%4==2)
-        {
-            Instantiate(rock2, new Vector2(width, -i * 5), Quaternion.identity);
-        } else if(type%4==3)
-        {
-            Instantiate(rock3, new Vector2(width, -i * 5), Quaternion.identity);
+            oil = oil1;
+            Instantiate(oil, new Vector2(width, -i * 5), Quaternion.identity);
+            counter = 0;
         }
         else
         {
-            Instantiate(rock4, new Vector2(width, -i * 5), Quaternion.identity);
+            if (type % 4 == 1)
+            {
+                rock = rock1;
+            }
+            else if (type % 4 == 2)
+            {
+                rock = rock2;
+            }
+            else if (type % 4 == 3)
+            {
+                rock = rock3;
+            }
+            else
+            {
+                rock = rock4;
+
+            }
+            Instantiate(rock, new Vector2(width, -i * 5), Quaternion.identity);
         }
 
     }

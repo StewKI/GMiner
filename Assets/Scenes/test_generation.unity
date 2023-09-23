@@ -244,13 +244,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f20b0699c369cc4a82c2394b148c61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 10
-  rock1: {fileID: 4689251731177175711, guid: 76655de2e86562f428f5e5545a3e4ac3, type: 3}
-  rock2: {fileID: 4154399723344895229, guid: d16f92417040e864db66c6eaef59c705, type: 3}
-  rock3: {fileID: 720196869797374212, guid: 30629307fd6af034a83b3140641eb0ce, type: 3}
-  rock4: {fileID: 6629590971784059521, guid: 3d5e03c2876505640817990721b5f319, type: 3}
-  oil: {fileID: 6629590971784059521, guid: 3d5e03c2876505640817990721b5f319, type: 3}
+  height: 20
+  rock1: {fileID: 1014379804364440928, guid: 16cb4f72bdd2282449df2e90a6f5b178, type: 3}
+  rock2: {fileID: 8126382840687626907, guid: 9af35731c31dd2f4e8f9d0741aa49424, type: 3}
+  rock3: {fileID: 55890634862224359, guid: 5ee5480c76b9aad45a670122d99c229e, type: 3}
+  rock4: {fileID: 7806929604276468801, guid: 3d8d4759cf121484abd9a9b8461807ee, type: 3}
+  oil1: {fileID: 1794446443636114073, guid: 3e1993442c4237a428d961ca06c6b8b3, type: 3}
   cam: {fileID: 802232286}
+  probability: 5
 --- !u!4 &813632282
 Transform:
   m_ObjectHideFlags: 0
