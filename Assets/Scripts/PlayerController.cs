@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Vector2.Distance(rb.velocity, new Vector2(Movement() * velocity, 0f)) > 0.1f)
         rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness);
 
         sprite.transform.rotation = Quaternion.Euler(0, 0, rotationScale * Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)));
