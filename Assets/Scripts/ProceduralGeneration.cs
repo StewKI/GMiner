@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProceduralGeneration : MonoBehaviour
 {
 
-    [SerializeField] int height;
+    //[SerializeField] int height;
     float width;
     [SerializeField] GameObject rock1, rock2, rock3, rock4, oil1;
     GameObject rock, oil;
@@ -14,32 +14,39 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int probability;
     int ranType, curType;
     int counter = 0;
+    [SerializeField] int heightRepetition = 3;
+    [SerializeField] GameObject background;
 
     void Start()
     {
-        Generate();
+        Generate(10, 0f);
     }
 
-    void Generate(){
+    public void GenerateBG(float yOffset)
+    {
+        Instantiate(background, new Vector3(0, -yOffset, 1f), Quaternion.identity);
+    }
+
+    public void Generate(int numOfRocks, float yOffset){
 
         ranType = Random.Range(1, 10);
-        for (int i=0;i<height;i++){
+        for (int i=1;i<numOfRocks;i++){
             width = cam.ViewportToWorldPoint(new Vector3(Random.Range(0.1f, 0.9f), 0, 0)).x;
             do {
                 curType = Random.Range(1, 10);
             } while (curType == ranType);
-            spawnObject(curType, i);
+            spawnObject(curType, i, yOffset);
             counter++;
             ranType = curType;
         }
     }
 
-    void spawnObject(int type, int i)
+    void spawnObject(int type, int i, float yOffset)
     {
         if (counter >= probability + Random.RandomRange(0, 2))
         {
             oil = oil1;
-            Instantiate(oil, new Vector2(width, -i * 5), Quaternion.identity);
+            Instantiate(oil, new Vector2(width, -i * heightRepetition + yOffset), Quaternion.identity);
             counter = 0;
         }
         else
@@ -61,7 +68,7 @@ public class ProceduralGeneration : MonoBehaviour
                 rock = rock4;
 
             }
-            Instantiate(rock, new Vector2(width, -i * 5), Quaternion.identity);
+            Instantiate(rock, new Vector2(width, -i * heightRepetition + yOffset), Quaternion.identity);
         }
 
     }
