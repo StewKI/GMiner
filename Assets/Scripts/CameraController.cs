@@ -26,11 +26,24 @@ public class CameraController : MonoBehaviour
     private float timeElapsed = 0f;
     private float simTime = 30f;
 
+    public Canvas cPostpaid, cPrepaid;
+
     // Start is called before the first frame update
     void Start()
     {
         pGen = generator.GetComponent<ProceduralGeneration>();
         //pGen.Generate()
+
+
+        //Scene init
+        if (MainMenuController.isPostpaid)
+        {
+            cPrepaid.enabled = false;
+        }
+        else
+        {
+            cPostpaid.enabled = false;
+        }
     }
 
     public void SlowMode(bool activated)
@@ -66,7 +79,11 @@ public class CameraController : MonoBehaviour
     {
         if(actualSpeed > DrillSpeed()) actualSpeed = DrillSpeed();
 
-        if ((Input.touchCount > 0 || Input.GetMouseButton(0)) || actualSpeed < 0f)
+        if(actualSpeed < 0f)
+        {
+            actualSpeed += 2 * laziness;
+        }
+        else if ((Input.touchCount > 0 || Input.GetMouseButton(0)))
         {
             if (actualSpeed < DrillSpeed())
                 actualSpeed += laziness;
@@ -119,14 +136,19 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void EndScreen()
+    public void EndScreen()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 
     public void ReturnBack()
     {
         actualSpeed = -DrillSpeed();
+    }
+
+    public void OdustaniBtn()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 68384386}
   - component: {fileID: 68384385}
   - component: {fileID: 68384384}
-  - component: {fileID: 68384383}
   m_Layer: 5
   m_Name: Plati
   m_TagString: Untagged
@@ -240,22 +239,6 @@ RectTransform:
   m_AnchoredPosition: {x: -190, y: -220}
   m_SizeDelta: {x: 325, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &68384383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 68384381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  mainText: {fileID: 0}
-  btnText: {fileID: 132378945}
-  animationSpeed: 10
 --- !u!114 &68384384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 68384383}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Functions, Assembly-CSharp
         m_MethodName: openHidePanel
         m_Mode: 1
@@ -840,7 +823,6 @@ GameObject:
   - component: {fileID: 181482591}
   - component: {fileID: 181482590}
   - component: {fileID: 181482589}
-  - component: {fileID: 181482588}
   m_Layer: 5
   m_Name: Plati
   m_TagString: Untagged
@@ -868,22 +850,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -640}
   m_SizeDelta: {x: 690.277, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &181482588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181482586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  mainText: {fileID: 0}
-  btnText: {fileID: 334964733}
-  animationSpeed: 10
 --- !u!114 &181482589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 181482588}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Functions, Assembly-CSharp
         m_MethodName: openHidePanel
         m_Mode: 1
@@ -1386,7 +1352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2500rsd
+  m_text: 4340rsd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
   m_sharedMaterial: {fileID: 8390292117718979607, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
@@ -1473,6 +1439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481997446}
   - component: {fileID: 481997448}
+  - component: {fileID: 481997449}
   - component: {fileID: 481997447}
   m_Layer: 5
   m_Name: bodovi
@@ -1597,6 +1564,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481997445}
   m_CullTransparentMesh: 1
+--- !u!114 &481997449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481997445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aadb98ba208c954588bfb276945e86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524906424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 145rsd\l
+  m_text: 217rsd\l
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
   m_sharedMaterial: {fileID: 8390292117718979607, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
@@ -1877,7 +1856,6 @@ GameObject:
   - component: {fileID: 763478928}
   - component: {fileID: 763478927}
   - component: {fileID: 763478926}
-  - component: {fileID: 763478925}
   m_Layer: 5
   m_Name: Plati (1)
   m_TagString: Untagged
@@ -1905,22 +1883,6 @@ RectTransform:
   m_AnchoredPosition: {x: 190, y: -220}
   m_SizeDelta: {x: 325, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &763478925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763478923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  mainText: {fileID: 0}
-  btnText: {fileID: 1523373383}
-  animationSpeed: 10
 --- !u!114 &763478926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,7 +1927,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 763478925}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Functions, Assembly-CSharp
         m_MethodName: openHidePanel
         m_Mode: 1
@@ -3322,7 +3284,6 @@ GameObject:
   - component: {fileID: 1778628389}
   - component: {fileID: 1778628388}
   - component: {fileID: 1778628387}
-  - component: {fileID: 1778628386}
   m_Layer: 5
   m_Name: Plati
   m_TagString: Untagged
@@ -3350,22 +3311,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -520}
   m_SizeDelta: {x: 690.277, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1778628386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778628384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  mainText: {fileID: 0}
-  btnText: {fileID: 1671851370}
-  animationSpeed: 10
 --- !u!114 &1778628387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,7 +3355,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778628386}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Functions, Assembly-CSharp
         m_MethodName: openHidePanel
         m_Mode: 1

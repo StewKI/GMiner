@@ -122,8 +122,9 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "nafta")
         {
             pGen.GeneratePipesAsync(collision.gameObject.transform.position);
-            pGen.GenerateStar(1, collision.gameObject.transform.position);
+            pGen.GenerateStar(MainMenuController.typeOfUser, collision.gameObject.transform.position);
             cam.GetComponent<CameraController>().SlowMode(true);
+            MainMenuController.bodovi += MainMenuController.typeOfUser + 1;
             //Nafta();
         }
     }
