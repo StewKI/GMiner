@@ -7,20 +7,31 @@ public class UI_Functions : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     [SerializeField] GameObject mainText;
-    public float moveSpeed = 10f;
+    [SerializeField] TMP_Text btnText;
+    public float animationSpeed = 10f;
+
+    private const float lowPosY = -220f;
+    private const float highPosY = 400f;
+
+    private float wantedPosY = highPosY;
+
+    private RectTransform rectTrans;
 
     public void openHidePanel()
     {
 
-        var rectTrans = panel.GetComponent<RectTransform>();
         Debug.Log("uso");
         if(rectTrans.anchoredPosition.y > 0)
         {
-            rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, -220f);
+            btnText.text = "PREKINI IGRU";
+            wantedPosY = lowPosY;
+            //rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, -220f);
         }
         else
         {
-            rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, 400f);
+            btnText.text = "NASTAVI IGRU";
+            wantedPosY = highPosY;
+            //rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, 400f);
         }
 
 
@@ -31,6 +42,16 @@ public class UI_Functions : MonoBehaviour
             mainText.SetActive(!isTextActive);
         }
            
+    }
+
+    private void Start()
+    {
+        rectTrans = panel.GetComponent<RectTransform>();
+    }
+
+    private void LateUpdate()
+    {
+        rectTrans.anchoredPosition = Vector2.Lerp(rectTrans.anchoredPosition, new Vector2(rectTrans.anchoredPosition.x, wantedPosY), Time.deltaTime * animationSpeed);
     }
 
 }

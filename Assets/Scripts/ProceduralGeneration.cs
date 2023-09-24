@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,10 +17,34 @@ public class ProceduralGeneration : MonoBehaviour
     int counter = 0;
     [SerializeField] int heightRepetition = 3;
     [SerializeField] GameObject background;
+    [SerializeField] GameObject pipe;
+    public GameObject[] stars;
+
+
+    private const float pipeOffset = 1.14f;
 
     void Start()
     {
         Generate(10, 0f);
+    }
+
+    public void GenerateStar(int type, Vector2 worldCoords)
+    {
+        Debug.Log(stars[type]);
+        Instantiate(stars[type], new Vector3(worldCoords.x, worldCoords.y, -0.3f), Quaternion.identity);
+    }
+
+    public void GeneratePipes(Vector2 worldCoordinates)
+    {
+        Vector3 worldCoords = new Vector3(worldCoordinates.x, worldCoordinates.y + pipeOffset * 0.5f, -0.2f);
+
+        Instantiate(pipe, worldCoords, Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 1), Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 2), Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 3), Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 4), Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 5), Quaternion.identity);
+        Instantiate(pipe, worldCoords + new Vector3(0, pipeOffset * 6), Quaternion.identity);
     }
 
     public void GenerateBG(float yOffset)

@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public GameObject sprite;
 
+    public GameObject generatorObj;
+    private ProceduralGeneration pGen;
+
     public float velocity = 1f;
     public float laziness = 0.1f;
     public float rotationScale = 1f;
@@ -17,6 +20,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        pGen = generatorObj.GetComponent<ProceduralGeneration>();
     }
 
     // Update is called once per frame
@@ -92,7 +97,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        cam.GetComponent<CameraController>().ReturnBack();
+        if (collision.gameObject.tag == "kamen")
+        {
+            cam.GetComponent<CameraController>().ReturnBack();
+        }
+        else if (collision.gameObject.tag == "nafta")
+        {
+            pGen.GeneratePipes(collision.gameObject.transform.position);
+            pGen.GenerateStar(1, collision.gameObject.transform.position);
+            Nafta();
+        }
+    }
+
+    private void Nafta()
+    {
+
     }
 
 }

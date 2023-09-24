@@ -65,12 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Vasa lokacija:
-
-    Milentija Popovica 1, Beograd
-
-    Tociono mesto:
-    1'
+  m_text: "Va\u0161a lokacija:\nMihaila Avramovi\u0107a 48a, Beograd\nTo\u010Diono
+    mesto: 1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
   m_sharedMaterial: {fileID: 8390292117718979607, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
@@ -164,16 +160,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893064111535615421}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 536777553782355562}
+  m_Father: {fileID: 7648779883695792771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8.000028}
   m_SizeDelta: {x: 690, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5236034751578161776
@@ -213,8 +209,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288151808
-  m_fontColor: {r: 0, g: 0.003921569, b: 0.59607846, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -406,7 +402,6 @@ GameObject:
   - component: {fileID: 441239579737504794}
   - component: {fileID: 4960251624072777348}
   - component: {fileID: 3117812860951081817}
-  - component: {fileID: 4852344535232431845}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -425,9 +420,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7648779883695792771}
-  - {fileID: 7929047082668010620}
+  m_Children: []
   m_Father: {fileID: 451374842350401473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -517,7 +510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4852344535232431845}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_Functions, Assembly-CSharp
         m_MethodName: openHidePanel
         m_Mode: 1
@@ -528,22 +521,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4852344535232431845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304505054257690537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 6032752828639445097}
-  mainText: {fileID: 7572620814206551421}
-  moveSpeed: 10
+        m_CallState: 0
 --- !u!1 &5102851040683206643
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,12 +553,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 536777553782355562}
+  m_Children:
+  - {fileID: 7929047082668010620}
+  m_Father: {fileID: 451374842350401473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000018119812, y: 8}
+  m_AnchoredPosition: {x: -10.259996, y: 278.00003}
   m_SizeDelta: {x: 690.277, y: 129.427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4465624635800139137
@@ -604,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.98823535, g: 0.33333334, b: 0.16470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -691,7 +670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 6032752828639445097}
   mainText: {fileID: 7572620814206551421}
-  moveSpeed: 10
+  btnText: {fileID: 4959042667336400418}
+  animationSpeed: 10
 --- !u!1 &5983890456280416282
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +808,7 @@ RectTransform:
   - {fileID: 1250411304202164295}
   - {fileID: 3062029735115757520}
   - {fileID: 536777553782355562}
+  - {fileID: 7648779883695792771}
   m_Father: {fileID: 9020863925133312373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -938,7 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ZAPOCNI TOCENJE
+  m_text: "ZAPO\u010DNI TO\u010DENJE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
   m_sharedMaterial: {fileID: 8390292117718979607, guid: 2bcf8cd5ef00946e4a2c7742448c5520, type: 2}
