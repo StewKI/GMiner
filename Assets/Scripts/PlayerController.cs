@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,10 +20,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(Vector2.Distance(rb.velocity, new Vector2(Movement() * velocity, 0f)) > 0.1f)
-        rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness);
+        //if(Vector2.Distance(rb.velocity, new Vector2(Movement() * velocity, 0f)) > 0.1f)
+        rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness * Time.fixedDeltaTime);
 
         sprite.transform.rotation = Quaternion.Euler(0, 0, rotationScale * Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)));
         /*
@@ -35,16 +33,48 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private int Movement()  //-1 = left, 1 = right
+    public void TurnParticles(bool On)
     {
-        //TODO: add touch input
+        if (On)
+        {
+            sprite.GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else
+        {
+            sprite.GetComponentInChildren<ParticleSystem>().Stop();
+        }
+    }
+
+    private int Movement()  // (-1 = left), (1 = right)
+    {
+        const float luft = 0.2f;
+
+        if (Input.touchCount > 0)
+        {
+            var tInput = Input.GetTouch(0);
+            float xTouch = cam.ScreenToWorldPoint(tInput.position).x;
+
+            //Debug.Log(xTouch);
+
+            float xDrill = transform.position.x;
+            if (Mathf.Abs(xTouch - xDrill) > luft)
+            {
+                if (xTouch > xDrill)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
 
         if(Input.GetMouseButton(0))
         {
-            
             float xClick = cam.ScreenToWorldPoint(Input.mousePosition).x;
             float xDrill = transform.position.x;
-            if (Mathf.Abs(xClick - xDrill) > 0.1f)
+            if (Mathf.Abs(xClick - xDrill) > luft)
             {
                 if (xClick > xDrill)
                 {
@@ -58,6 +88,11 @@ public class PlayerController : MonoBehaviour
         }
 
         return 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        cam.GetComponent<CameraController>().ReturnBack();
     }
 
 }
