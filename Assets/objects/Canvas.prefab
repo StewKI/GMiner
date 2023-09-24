@@ -517,12 +517,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7186990958465041208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0deee0cbe874a6540ab7ff5132503bdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 41c3211b427e73442ac83bb0982ed6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 7977760107091091744}
   mainText: {fileID: 4681624596605184789}
-  moveSpeed: 5
+  moveSpeed: 10
 --- !u!1 &7977760107091091744
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +534,6 @@ GameObject:
   - component: {fileID: 5535591839241971437}
   - component: {fileID: 3812379829289240477}
   - component: {fileID: 6868465607207408349}
-  - component: {fileID: 5463187875576678437}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -602,21 +601,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5463187875576678437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7977760107091091744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0deee0cbe874a6540ab7ff5132503bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 7977760107091091744}
-  mainText: {fileID: 4681624596605184789}
-  moveSpeed: 5
 --- !u!1 &8180628652071106383
 GameObject:
   m_ObjectHideFlags: 0

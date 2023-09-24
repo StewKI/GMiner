@@ -13,6 +13,7 @@ public class UI_Functions : MonoBehaviour
     {
 
         var rectTrans = panel.GetComponent<RectTransform>();
+        Debug.Log("uso");
         if(rectTrans.anchoredPosition.y > 0)
         {
             rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, -220f);
