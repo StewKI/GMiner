@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour
     private float dokleDoso = -HeightBG / 2; //TODO : rename
     private int numOfSpawnedBGs = 0;
     private bool started = false;
+    private bool isSlowMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,29 @@ public class CameraController : MonoBehaviour
         //pGen.Generate()
     }
 
+    public void SlowMode(bool activated)
+    {
+        isSlowMode = activated;
+    }
+
+    private float DrillSpeed()
+    {
+        float ds = drillSpeed;
+        if (isSlowMode)
+        {
+            ds *= 0.7f;
+        }
+        return ds;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(actualSpeed > DrillSpeed()) actualSpeed = DrillSpeed();
+
         if ((Input.touchCount > 0 || Input.GetMouseButton(0)) || actualSpeed < 0f)
         {
-            if (actualSpeed < drillSpeed)
+            if (actualSpeed < DrillSpeed())
                 actualSpeed += laziness;
         }
         else
@@ -43,7 +62,6 @@ public class CameraController : MonoBehaviour
                 actualSpeed = 0f;
             }
         }
-        //actualSpeed = drillSpeed; //TEMP TESTING
 
         transform.position = new Vector3(transform.position.x, transform.position.y - (actualSpeed * Time.fixedDeltaTime), transform.position.z);
 
@@ -73,12 +91,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-    }
 
     public void ReturnBack()
     {
-        actualSpeed = -drillSpeed;
+        actualSpeed = -DrillSpeed();
     }
 }

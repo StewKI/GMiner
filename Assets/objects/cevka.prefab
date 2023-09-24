@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 7
-  luft: 0.03
+  luft: 0.01
+  repeatTime: 1

@@ -30,7 +30,16 @@ public class PlayerController : MonoBehaviour
         //if(Vector2.Distance(rb.velocity, new Vector2(Movement() * velocity, 0f)) > 0.1f)
         rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness * Time.fixedDeltaTime);
 
-        sprite.transform.rotation = Quaternion.Euler(0, 0, rotationScale * Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)));
+        float rotZ = rotationScale * Vector2.Angle(Vector2.down, new Vector2(rb.velocity.x, -1f));
+
+        rotZ = Mathf.Exp(rotZ);
+
+        if(Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)) < 0f)
+        {
+            rotZ *= -1;
+        }
+
+        sprite.transform.rotation = Quaternion.Euler(0, 0, rotZ);
         /*
         Debug.Log(Vector2.down);
         Debug.Log(new Vector2(rb.velocity.x, -1f));
@@ -103,9 +112,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.tag == "nafta")
         {
-            pGen.GeneratePipes(collision.gameObject.transform.position);
+            pGen.GeneratePipesAsync(collision.gameObject.transform.position);
             pGen.GenerateStar(1, collision.gameObject.transform.position);
-            Nafta();
+            cam.GetComponent<CameraController>().SlowMode(true);
+            //Nafta();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "nafta")
+        {
+            cam.GetComponent<CameraController>().SlowMode(false);
+            //Nafta();
         }
     }
 

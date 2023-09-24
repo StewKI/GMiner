@@ -11,7 +11,9 @@ public class PipeController : MonoBehaviour
 
     public float animationSpeed = 1f;
     public float luft = 0.1f;
+    public float repeatTime = 1f;
 
+    private float curTime = 0f;
     private int state = 0;
 
 
@@ -34,9 +36,25 @@ public class PipeController : MonoBehaviour
                 transform.localScale = Vector2.Lerp(transform.localScale, normalScale, animationSpeed * Time.deltaTime);
                 break;
 
+            case 2:
+                //Debug.Log("PIPE REPEAT: " + curTime);
+                curTime += Time.deltaTime;
+                if(curTime> repeatTime)
+                {
+                    curTime = 0f;
+                    state = 0;
+                }
+                break;
+
         }
 
         if (Vector3.Distance(transform.localScale, biggerScale) < luft) state = 1;
-        else if (transform.localScale == normalScale) state = 2;
+        else if (Vector3.Distance(transform.localScale, normalScale) < luft && state == 1)
+        {
+            state = 2;
+            biggerScale.y = normalScale.y;
+        }
+
+
     }
 }

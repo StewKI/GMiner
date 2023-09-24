@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fNormalScale: 0.063
-  fBiggerScale: 0.09
+  fBiggerScale: 0.15
   fSmallerScale: 0.02
-  animationSpeed: 6
+  animationSpeed: 5.44
   luft: 0.03
