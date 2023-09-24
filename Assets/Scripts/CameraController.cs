@@ -11,12 +11,12 @@ public class CameraController : MonoBehaviour
     public float drillSpeed = 1f;
     public float laziness = 0.1f;
 
-    private bool started = false;
     private float actualSpeed = 0f;
 
     private const float HeightBG = 13.96f;
     private float dokleDoso = -HeightBG / 2; //TODO : rename
     private int numOfSpawnedBGs = 0;
+    private bool started = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +26,9 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if ((Input.touchCount > 0 || Input.GetMouseButton(0)) || actualSpeed < 0f)
         {
             if (actualSpeed < drillSpeed)
                 actualSpeed += laziness;
@@ -37,21 +37,48 @@ public class CameraController : MonoBehaviour
         {
             if (actualSpeed > 0f)
                 actualSpeed -= laziness;
+
+            if (actualSpeed < laziness)
+            {
+                actualSpeed = 0f;
+            }
         }
-        actualSpeed = drillSpeed; //TEMP TESTING
+        //actualSpeed = drillSpeed; //TEMP TESTING
 
-        transform.position = new Vector3(transform.position.x, transform.position.y - (actualSpeed * Time.deltaTime), transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - (actualSpeed * Time.fixedDeltaTime), transform.position.z);
 
-        if(transform.position.y < dokleDoso)
+        if (transform.position.y < dokleDoso)
         {
             dokleDoso -= HeightBG;
             numOfSpawnedBGs++;
             pGen.GenerateBG(HeightBG * (numOfSpawnedBGs + 0.5f));
-            if(numOfSpawnedBGs %2 == 0)
+            if (numOfSpawnedBGs % 2 == 0)
             {
-                pGen.Generate(10, - numOfSpawnedBGs * HeightBG);
+                pGen.Generate(10, -numOfSpawnedBGs * HeightBG);
             }
             Debug.Log("uradio");
         }
+
+        if (actualSpeed > 0f && !started)
+        {
+            GetComponentInChildren<PlayerController>().TurnParticles(true);
+            GetComponentInChildren<TaleController>().CreateBrush();
+            started = true;
+        }
+        else if (actualSpeed == 0f)
+        {
+            GetComponentInChildren<PlayerController>().TurnParticles(false);
+            GetComponentInChildren<TaleController>().StopTale();
+            started = false;
+        }
+    }
+
+    private void Update()
+    {
+    }
+
+    public void ReturnBack()
+    {
+        actualSpeed = -drillSpeed;
     }
 }

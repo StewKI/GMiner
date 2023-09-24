@@ -12,28 +12,21 @@ public class TaleController : MonoBehaviour
 
     Vector2 lastPos;
 
+    private bool Stopped = false;
+
     private void Update()
     {
-        Drawing();
+        if (!Stopped)
+            Drawing();  
     }
+
 
     void Drawing()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            CreateBrush();
-        }
-        else if (Input.GetKey(KeyCode.Mouse0))
-        {
-            PointToMousePos();
-        }
-        else
-        {
-            currentLineRenderer = null;
-        }
+        AddAPoint();
     }
 
-    void CreateBrush()
+    public void CreateBrush()
     {
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
@@ -44,6 +37,8 @@ public class TaleController : MonoBehaviour
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
 
+        Stopped = false;
+
     }
 
     void AddAPoint(Vector2 pointPos)
@@ -53,7 +48,7 @@ public class TaleController : MonoBehaviour
         currentLineRenderer.SetPosition(positionIndex, pointPos);
     }
 
-    void PointToMousePos()
+    private void AddAPoint()
     {
         Vector2 mousePos = transform.position;
         if (lastPos != mousePos)
@@ -61,6 +56,12 @@ public class TaleController : MonoBehaviour
             AddAPoint(mousePos);
             lastPos = mousePos;
         }
+    }
+
+    public void StopTale()
+    {
+        currentLineRenderer = null;
+        Stopped = true;
     }
 
 }

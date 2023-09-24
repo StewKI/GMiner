@@ -43,7 +43,7 @@ public class ProceduralGeneration : MonoBehaviour
 
     void spawnObject(int type, int i, float yOffset)
     {
-        if (counter >= probability + Random.RandomRange(0, 2))
+        if (counter >= probability + Random.Range(0, 2))
         {
             oil = oil1;
             Instantiate(oil, new Vector2(width, -i * heightRepetition + yOffset), Quaternion.identity);
