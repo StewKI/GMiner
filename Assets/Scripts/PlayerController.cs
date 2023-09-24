@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private int Movement()  // (-1 = left), (1 = right)
     {
-        const float luft = 0.2f;
+        const float luft = 0.3f;
 
         if (Input.touchCount > 0)
         {
