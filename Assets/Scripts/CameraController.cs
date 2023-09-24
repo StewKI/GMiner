@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class CameraController : MonoBehaviour
     private int numOfSpawnedBGs = 0;
     private bool started = false;
     private bool isSlowMode = false;
+    private bool isPaused = true;
+
+    private bool gameStarted = false;
+    private float timeElapsed = 0f;
+    private float simTime = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +40,25 @@ public class CameraController : MonoBehaviour
 
     private float DrillSpeed()
     {
+        if (isPaused) return 0f;
+
         float ds = drillSpeed;
         if (isSlowMode)
         {
             ds *= 0.7f;
         }
         return ds;
+    }
+
+    public void GamePause(bool paused)
+    {
+        isPaused = paused;
+        GetComponentInChildren<PlayerController>().GamePause(paused);
+
+        if (!gameStarted)
+        {
+            gameStarted = true;
+        }
     }
 
     // Update is called once per frame
@@ -89,6 +108,20 @@ public class CameraController : MonoBehaviour
             GetComponentInChildren<TaleController>().StopTale();
             started = false;
         }
+
+        if (gameStarted)
+        {
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed > simTime)
+            {
+                EndScreen();
+            }
+        }
+    }
+
+    private void EndScreen()
+    {
+        SceneManager.LoadScene(1);
     }
 
 

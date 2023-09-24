@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float laziness = 0.1f;
     public float rotationScale = 1f;
 
+    private bool isPaused = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,24 +29,31 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if(Vector2.Distance(rb.velocity, new Vector2(Movement() * velocity, 0f)) > 0.1f)
-        rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness * Time.fixedDeltaTime);
-
-        float rotZ = rotationScale * Vector2.Angle(Vector2.down, new Vector2(rb.velocity.x, -1f));
-
-        rotZ = Mathf.Exp(rotZ);
-
-        if(Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)) < 0f)
+        if (!isPaused)
         {
-            rotZ *= -1;
+            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(Movement() * velocity, 0f), laziness * Time.fixedDeltaTime);
+
+            float rotZ = rotationScale * Vector2.Angle(Vector2.down, new Vector2(rb.velocity.x, -1f));
+
+            rotZ = Mathf.Exp(rotZ);
+
+            if (Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)) < 0f)
+            {
+                rotZ *= -1;
+            }
+
+            sprite.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
         }
 
-        sprite.transform.rotation = Quaternion.Euler(0, 0, rotZ);
-        /*
-        Debug.Log(Vector2.down);
-        Debug.Log(new Vector2(rb.velocity.x, -1f));
-        Debug.Log(Vector2.SignedAngle(Vector2.down, new Vector2(rb.velocity.x, -1f)));*/
+    }
 
+    public void GamePause(bool paused)
+    {
+        isPaused = paused;
     }
 
     public void TurnParticles(bool On)

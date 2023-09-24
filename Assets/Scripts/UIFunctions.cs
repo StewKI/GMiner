@@ -16,6 +16,7 @@ public class UI_Functions : MonoBehaviour
     private float wantedPosY = highPosY;
 
     private RectTransform rectTrans;
+    public GameObject camera;
 
     public void openHidePanel()
     {
@@ -25,12 +26,14 @@ public class UI_Functions : MonoBehaviour
         {
             btnText.text = "PREKINI IGRU";
             wantedPosY = lowPosY;
+            camera.GetComponent<CameraController>().GamePause(false);
             //rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, -220f);
         }
         else
         {
             btnText.text = "NASTAVI IGRU";
             wantedPosY = highPosY;
+            camera.GetComponent<CameraController>().GamePause(true);
             //rectTrans.anchoredPosition = new Vector2(rectTrans.anchoredPosition.x, 400f);
         }
 
